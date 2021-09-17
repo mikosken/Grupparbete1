@@ -59,7 +59,8 @@ Ett array av typen 'object' kan innehålla alla objekt oavsett typ eftersom alla
 Ska det kunna finnas 'null'-rutor, eller ska vi implementera exempelvis att det finns Floor-objekt för att hålla
 reda på vart spelaren kan gå, och Wall-objekt som säger vart spelaren inte kan gå?  
 * Steg 1, handgjord karta.
-* Steg 2, eventuellt procedurellt genererad karta.
+* Steg 2, eventuellt procedurellt genererad karta.  
+  
 Förslag: Innehåller två 2D-arrayer för världen, en med endast grundkarta med väggar/golv och en som innehåller alla characters/andra objekt som finns i världen?  
 Då vet vi automatisk vad som ska finnas i en ruta om inget annat finns där, ex. när spelaren flyttar på sig.  
 Behöver metod för att skapa string-representation av den del av världen som vi befinner oss i. *string MapString(x,y,width,height)?*  
