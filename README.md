@@ -1,12 +1,12 @@
 # Grupparbete1
   
-##ASCII-baserat Dungeon-spel i konsolfönster.
+#ASCII-baserat Dungeon-spel i konsolfönster.
   
 *Spelare som flyttar runt i en Dungeon för att hitta skatten.
 *Spelaren ska undvika eller besegra monster.
 *Spelaren har olika föremål som vapen och health potions.
   
-N*är användaren trycker på WASD så flyttas karaktären runt på kartan.
+När användaren trycker på WASD så flyttas karaktären runt på kartan.
   
 *Interfacet visar vad som kommer ske för action när användaren trycker på respektive WASD.
 Ex.
@@ -18,7 +18,7 @@ D - Pick Up Health Potion
 *Karaktärsobjekt har funktion för Move(Direction), kallar på funktion hos Kartan att flytta karaktärsobjekt till specifik ruta.
 *Equipmentobjekt har funktion för Use() som aktiverar funktion.
   
-###Main loop
+#Main loop
 Ritar ut karta, visar alternativ och tar in input.
 
 
