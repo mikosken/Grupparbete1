@@ -38,7 +38,7 @@ I så fall kan kartan för varje objekt på kartan kunna kalla på property 'Rep
 ### Player : Character  
 Klass som ärver från Character, kontrollerbar av användaren.
 
-### Monster : Caracter
+### NonPlayerCharacter : Caracter
 Klass som ärver från Character, kontrolleras ej av spelaren.  
 Förslag: Kan eventuellt flytta runt lite av sig själv?  
 Om springer på spelare så gör skada?  
@@ -47,9 +47,17 @@ Om springer på spelare så gör skada?
 Funktion för Use(Target) som aktiverar funktion, eller ska vi implementera Use(Target) i ett interface?  
 Förslag: Innehåller ett Verb-property som säger vad det kallas att använda objektet.  
 Exempelvis "Attack" eller "Swing" för svärd, "Drink" för Potions, etc.  
+Abstrakt metod för Use(target).  
   
 Om objekt ska kunna ligga på marken för att plockas upp av spelaren så behöver vi kunna representera även det med ett tecken för objektet.  
-Kanske skulle ha ett interface för "IMappable" eller liknande som lagrar dessa tecken?  
+
+### Potion : Equipment
+Klass som ärver från Equipment.  
+Implementerar Use()  
+
+### Sword : Equipment
+Klass som ärver Equipment.  
+Implementerar Use()  
   
 ### Map-objekt
 Innehåller ett 2D-array (eller lista?) för hela spelvärlden, där varje element visar vad rutan innehåller.  
