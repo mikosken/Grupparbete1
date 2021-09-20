@@ -10,10 +10,10 @@ När användaren trycker på WASD så flyttas karaktären runt på kartan.
   
 * Interfacet visar vad som kommer ske för action när användaren trycker på respektive WASD.
 Ex.  
-W - Move Up  
-A - Wall, blocked  
-S - Attack monster downwards  
-D - Pick Up Health Potion  
+W - Up, Move  
+A - Left, blocked by wall  
+S - Down, Attack monster  
+D - Right, Pick Up Health Potion  
 Ska det vara möjligt att utföra flera olika actions mot en och samma ruta, ex. en ruta som innehåller ett monster?  
   
 ### Main loop
@@ -44,7 +44,7 @@ Förslag: Kan eventuellt flytta runt lite av sig själv?
 Om springer på spelare så gör skada?  
 
 ### Equipment-objekt
-Funktion för Use() som aktiverar funktion, eller ska vi implementera Use() i ett interface?  
+Funktion för Use(Target) som aktiverar funktion, eller ska vi implementera Use(Target) i ett interface?  
 Förslag: Innehåller ett Verb-property som säger vad det kallas att använda objektet.  
 Exempelvis "Attack" eller "Swing" för svärd, "Drink" för Potions, etc.  
   
@@ -60,9 +60,12 @@ Ska det kunna finnas 'null'-rutor, eller ska vi implementera exempelvis att det 
 reda på vart spelaren kan gå, och Wall-objekt som säger vart spelaren inte kan gå?  
 * Steg 1, handgjord karta.
 * Steg 2, eventuellt procedurellt genererad karta.  
+Stödmetoder för att göra kartskapande enklare:  
+DrawPoint(x, y, object) - Placerar ut ett *object* på position x,y.  
+DrawRect(x,y, width, height, borderObject, fillObject) - Placerar ut en rektangel på kartan med väggar av *borderObject* och fylld med *fillObject*.  
   
 Förslag: Innehåller två 2D-arrayer för världen, en med endast grundkarta med väggar/golv och en som innehåller alla characters/andra objekt som finns i världen?  
-Då vet vi automatisk vad som ska finnas i en ruta om inget annat finns där, ex. när spelaren flyttar på sig.  
+Då vet vi automatisk vad som ska finnas i en ruta om inget annat finns där, ex. när spelaren flyttar på sig eller plockar upp ett item från kartan.  
 Behöver metod för att skapa string-representation av den del av världen som vi befinner oss i. *string MapString(x,y,width,height)?*  
   
 ### Victory/lose condition 
