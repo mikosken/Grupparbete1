@@ -14,9 +14,9 @@ namespace DungeonCrawler
         public char Representation { get; set; }
         public int PositionX { get; set; }
         public int PositionY { get; set; }
-        
+
         protected DungeonMap map;
-            
+
         public Character(int x, int y, DungeonMap map)
         {
             PositionX = x;
@@ -25,9 +25,11 @@ namespace DungeonCrawler
             Health = 100;
         }
 
-        public virtual void Move(char direction)
+        public virtual (int x, int y) Move(char direction)
         {
-            map.Move(PositionX, PositionY, direction);
+            (int newX, int newY) = map.Move(PositionX, PositionY, direction);
+
+            return (newX, newY);
         }
 
         public abstract void NextAction();
@@ -39,7 +41,8 @@ namespace DungeonCrawler
             if (Health < 0)
                 Health = 0;
 
-            if (Health == 0) {
+            if (Health == 0)
+            {
                 // dö
                 OnDeath();
             }
@@ -50,7 +53,8 @@ namespace DungeonCrawler
             throw new NotImplementedException();
         }
 
-        public virtual void OnDeath() {
+        public virtual void OnDeath()
+        {
             map.RemoveDynamic(PositionX, PositionY);
         }
     }
