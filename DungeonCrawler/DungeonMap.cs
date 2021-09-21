@@ -118,7 +118,7 @@ namespace DungeonCrawler
         }
 
         /// <summary>
-        /// Iplementing where the Characters can go.
+        /// Check if the Characters can move.
         /// </summary>
         public bool CanMoveTo(int x, int y)
         {

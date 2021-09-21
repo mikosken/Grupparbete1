@@ -17,11 +17,9 @@ namespace DungeonCrawler
             Inventory = new List<object>();
         }
 
-
-
         public void AddCoins(int coins)
         {
-            throw new NotImplementedException();
+            inventory
         }
 
         public void SubtractCoins(int coins)
