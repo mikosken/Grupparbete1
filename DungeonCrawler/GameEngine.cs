@@ -16,8 +16,8 @@ namespace DungeonCrawler
         public GameEngine()
         {
             //UpdateWindowSize();
-            WindowWidth = 60;
-            WindowHeight = 30;
+            WindowWidth = 100;
+            WindowHeight = 50;
             
             WorldMap = new DungeonMap(WindowWidth, WindowHeight - 3);
             Player = new PlayerCharacter(2, 2, WorldMap, '@');
