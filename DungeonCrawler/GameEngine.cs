@@ -23,6 +23,11 @@ namespace DungeonCrawler
             Player = new PlayerCharacter(2, 2, WorldMap, '@');
 
             WorldMap.PlaceDynamic(2, 2, Player);
+
+            // place equipment on map TEST
+            Equipment sword = new Equipment("sword");
+            WorldMap.PlaceDynamic(24, 24, sword);
+
         }
 
         public void MainLoop()

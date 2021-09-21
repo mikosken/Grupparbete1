@@ -24,12 +24,16 @@ namespace DungeonCrawler
             Inventory.Add(new Equipment("sword"));
             Inventory.Add(new Equipment("sword"));
             Inventory.Add(new Equipment("sword"));
+            Inventory.Add(new Equipment("sword"));
+           // Inventory.Add(new Equipment("sword"));
+
+
         }
 
         public override void Move(char direction) {
             var nextPosition = map.GetMoveTargetCoordinates(PositionX, PositionY, direction);
 
-            var dynamic = map.GetDynamic(nextPosition.x, nextPosition.y);
+            var dynamic = map.GetDynamic(nextPosition.x, nextPosition.y);   
 
             if (dynamic != null) {
                 if (dynamic is NonPlayerCharacter) {
@@ -42,6 +46,18 @@ namespace DungeonCrawler
                         ((NonPlayerCharacter)dynamic).Damage(damage);
                         return;
                     }
+                }
+                if (dynamic is Equipment)   // pick up equipment
+                {
+                    if (Inventory.Count == MaxInventorySize)
+                    {
+                        // implement player choice to discard
+                        // something or leave equipment on the ground
+                        return;
+                    }
+
+                    Inventory.Add((Equipment)dynamic);
+                    map.RemoveDynamic(nextPosition.x, nextPosition.y);
                 }
             }
 
