@@ -25,7 +25,7 @@ namespace DungeonCrawler
             Inventory.Add(new Equipment("sword"));
             Inventory.Add(new Equipment("sword"));
             Inventory.Add(new Equipment("sword"));
-           // Inventory.Add(new Equipment("sword"));
+            Inventory.Add(new Equipment("sword"));
 
 
         }
@@ -57,7 +57,7 @@ namespace DungeonCrawler
                     {
                         // implement player choice to discard
                         // something or leave equipment on the ground
-                        return;
+                        return nextPosition;
                     }
 
                     Inventory.Add((Equipment)dynamic);
