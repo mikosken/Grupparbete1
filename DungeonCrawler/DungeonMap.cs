@@ -85,23 +85,25 @@ namespace DungeonCrawler
             return sb.ToString();
         }
 
-        public bool Move(int fromX, int fromY, int toX, int toY)
+        public (int x, int y) Move(int fromX, int fromY, int toX, int toY)
         {
             if (!IsInBounds(fromX, fromY) ||
                 !IsInBounds(toX, toY) ||
                 dynamicMap[fromX, fromY] == null ||
                 dynamicMap[toX, toY] != null ||
                 !staticMap[toX, toY].Walkable
-                ) return false;
+                ) return (-1, -1);
 
             dynamicMap[toX, toY] = dynamicMap[fromX, fromY];
-            dynamicMap[toX, toY].PositionX = toX;
+            dynamicMap[toX, toY].PositionX = toX; // Tell the object its new position.
             dynamicMap[toX, toY].PositionY = toY;
+
             dynamicMap[fromX, fromY] = null;
-            return true;
+
+            return (toX, toY);
         }
 
-        public bool Move(int fromX, int fromY, char direction)
+        public (int x, int y) Move(int fromX, int fromY, char direction)
         {
             var target = GetMoveTargetCoordinates(fromX, fromY, direction);
 
