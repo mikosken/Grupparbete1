@@ -87,18 +87,31 @@ namespace DungeonCrawler
 
         public override void NextAction()
         {
-            var random = new Random();
+            int damage = 35;
 
+            var random = new Random();
             var directions = new char[] { 'w', 's', 'a', 'd' };
 
             int playerDist = PlayerDistance();
+            char playerDir = PlayerDirection();
+
+            var nextPosition = map.GetMoveTargetCoordinates(PositionX, PositionY, playerDir);
+
+            var dynamic = map.GetDynamic(nextPosition.x, nextPosition.y);
+
+            if (dynamic != null)
+            {
+                if (dynamic is PlayerCharacter)
+                {
+                    ((PlayerCharacter)dynamic).Damage(damage);
+                    return;
+                }
+            }
+
             if (playerDist != -1 && playerDist <= 5)
             {
                 // If the player is close, move towards player.
-                int dist = PlayerDistance();
-                char dir = PlayerDirection();
-
-                Move(PlayerDirection());
+                Move(playerDir);
             }
             else
             {
