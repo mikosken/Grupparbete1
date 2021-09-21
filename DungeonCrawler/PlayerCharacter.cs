@@ -22,7 +22,7 @@ namespace DungeonCrawler
 
             EquippedSlot = 0;
             Inventory.Add(new Equipment("sword"));
-            Inventory.Add(new Equipment("sword"));
+            Inventory.Add(new Equipment("potion"));
             //Inventory.Add(new Equipment("sword"));
             //Inventory.Add(new Equipment("sword"));
             //Inventory.Add(new Equipment("sword"));
@@ -125,6 +125,16 @@ namespace DungeonCrawler
                 if (i >= 1 && i <= MaxInventorySize)
                 {
                     EquippedSlot = i - 1;
+                    return true;
+                }
+            }
+
+            if (input == 'u')
+            {
+                if (Inventory[EquippedSlot] != null)
+                {
+                    Health += Inventory[EquippedSlot].Heal;
+                    Inventory.RemoveAt(EquippedSlot);
                     return true;
                 }
             }

@@ -37,6 +37,9 @@ namespace DungeonCrawler
                     Walkable = false;
                     Representation = '#';
                     break;
+
+                default:
+                    throw new ArgumentException("No such map tile type!");
             }
         }
     }

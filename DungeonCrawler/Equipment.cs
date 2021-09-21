@@ -26,6 +26,17 @@ namespace DungeonCrawler
                     Damage = 50;
                     Heal = 0;
                     break;
+
+                case "potion":
+                    Name = "Potion";
+                    UseVerb = "Drink";
+                    Representation = 'v';
+                    Damage = 0;
+                    Heal = 50;
+                    break;
+
+                default:
+                    throw new ArgumentException("No such equipment!");
             }
 
         }
