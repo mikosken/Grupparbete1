@@ -25,6 +25,24 @@ namespace DungeonCrawler
             return false;
         }
 
+        public IRepresentable GetDynamic(int x, int y) {
+            if (!IsInBounds(x, y))
+                return null;
+
+            return dynamicMap[x, y];
+        }
+
+        public bool RemoveDynamic(int x, int y) {
+            if (!IsInBounds(x, y))
+                return false;
+
+            if (dynamicMap[x, y] == null)
+                return false;
+
+            dynamicMap[x, y] = null;
+            return true;
+        }
+
         public DungeonMap(int mapWidth, int mapHeight)
         {
             MapWidth = mapWidth;
@@ -59,7 +77,8 @@ namespace DungeonCrawler
                         sb.Append(staticMap[i, j].Representation);
                     }
                 }
-                if (j < MapHeight - 1) sb.Append('\n');
+                //if (j < MapHeight - 1)
+                sb.Append('\n');
             }
             return sb.ToString();
         }
@@ -81,10 +100,16 @@ namespace DungeonCrawler
         }
 
 
+        public bool Move(int fromX, int fromY, char direction) {
+            var target = GetMoveTargetCoordinates(fromX, fromY, direction);
+
+            return Move(fromX, fromY, target.x, target.y);
+        }
+
         /// <summary>
         /// Controls for the main character.
         /// </summary>
-        public bool Move(int fromX, int fromY, char direction)
+        public (int x, int y) GetMoveTargetCoordinates(int fromX, int fromY, char direction)
         {
             //u, d, l, r
             int toX = fromX;
@@ -112,9 +137,9 @@ namespace DungeonCrawler
                     break;
 
                 default:
-                    return false;
+                    return (fromX, fromY);
             }
-            return Move(fromX, fromY, toX, toY);
+            return (toX, toY);
         }
 
         /// <summary>
@@ -129,10 +154,10 @@ namespace DungeonCrawler
         {
             BuildStaticRect(0, 0, MapWidth, MapHeight, new MapTile("wall"), new MapTile("wall"));
             BuildStaticRect(0, 0, MapWidth, MapHeight, new MapTile("wall"), new MapTile("floor"));
-            BuildStaticRect(5, 5, 5, 5, new MapTile("wall"), new MapTile("floor"));
+            BuildStaticRect(5, 5, 5, 5, new MapTile("wall"), new MapTile("wall"));
 
             var random = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 5; i++)
             {
                 int x = random.Next(1, MapWidth - 1);
                 int y = random.Next(1, MapHeight - 1);
@@ -172,6 +197,21 @@ namespace DungeonCrawler
                 }
             }
             return true;
+        }
+
+        public void NextTurn() {
+            for (int j = 0; j < MapHeight; j++)
+            {
+                for (int i = 0; i < MapWidth; i++)
+                {
+                    var obj = dynamicMap[i, j];
+                    if (obj == null)
+                        continue;
+
+                    if (obj is Character)
+                        ((Character)obj).NextAction();
+                }
+            }
         }
     }
 }

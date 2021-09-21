@@ -15,7 +15,10 @@ namespace DungeonCrawler
 
         public GameEngine()
         {
-            UpdateWindowSize();
+            //UpdateWindowSize();
+            WindowWidth = 60;
+            WindowHeight = 30;
+            
             WorldMap = new DungeonMap(WindowWidth, WindowHeight - 3);
             Player = new PlayerCharacter(2, 2, WorldMap, '@');
 
@@ -29,6 +32,8 @@ namespace DungeonCrawler
 
             while (input.Key != ConsoleKey.Escape)
             {
+                //Console.WindowHeight = WindowHeight;
+                //Console.WindowWidth = WindowWidth;
                 // Check victory condition.
                 //if (IsVictory()) DrawVictoryScreen();
                 // Check Game Over conditions.
@@ -38,7 +43,10 @@ namespace DungeonCrawler
 
                 // Do player actions.
                 Player.Move(input.KeyChar);
+                WorldMap.NextTurn();
                 WorldMap.DrawMap();
+
+                Console.WriteLine(Player.GetInventoryString());
 
                 // Determine possible actions for player.
                 // Write possible actions to console.

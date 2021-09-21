@@ -18,15 +18,13 @@ namespace DungeonCrawler
             loot = new CoinItem();
         }
 
-        public override void NextAction()
-        {
-            throw new NotImplementedException();
+        public override void NextAction() {
+            var random = new Random();
+
+            var directions = new char[] { 'w', 's', 'a', 'd' };
+
+            map.Move(PositionX, PositionY, directions[random.Next(0, directions.Length)]);
         }
 
-        public void OnDeath()
-        {
-            // Drop loot and remove NPC here.
-            throw new NotImplementedException();
-        }
     }
 }

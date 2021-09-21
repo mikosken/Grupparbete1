@@ -8,18 +8,49 @@ namespace DungeonCrawler
 {
     internal class PlayerCharacter : Character
     {
-        private List<object> Inventory;
+        private List<Equipment> Inventory;
+        public int EquippedSlot { get; set; }
+
+        public const int MaxInventorySize = 5;
+
         private int coinPurse = 0;
 
         public PlayerCharacter(int x, int y, DungeonMap map, char representation) : base(x, y, map)
         {
             Representation = representation;
-            Inventory = new List<object>();
+            Inventory = new List<Equipment>();
+
+            EquippedSlot = 0;
+            Inventory.Add(new Equipment("sword"));
+            Inventory.Add(new Equipment("sword"));
+            Inventory.Add(new Equipment("sword"));
+        }
+
+        public override void Move(char direction) {
+            var nextPosition = map.GetMoveTargetCoordinates(PositionX, PositionY, direction);
+
+            var dynamic = map.GetDynamic(nextPosition.x, nextPosition.y);
+
+            if (dynamic != null) {
+                if (dynamic is NonPlayerCharacter) {
+                    int damage = 10; // default damage (fists)
+
+                    if (Inventory[EquippedSlot] != null)
+                        damage = Inventory[EquippedSlot].Damage;
+
+                    if (damage != 0) {
+                        ((NonPlayerCharacter)dynamic).Damage(damage);
+                        return;
+                    }
+                }
+            }
+
+            map.Move(PositionX, PositionY, nextPosition.x, nextPosition.y);
         }
 
         public void AddCoins(int coins)
         {
-            inventory
+             
         }
 
         public void SubtractCoins(int coins)
@@ -27,9 +58,31 @@ namespace DungeonCrawler
             throw new NotImplementedException();
         }
 
-        override public void NextAction()
+        public override void NextAction()
         {
-            throw new NotImplementedException();
+        }
+
+        public string GetInventoryString() {
+            var stringBuilder = new StringBuilder();
+
+            const int Spacing = 8;
+
+            for (int i = 0; i < MaxInventorySize; i++) {
+                string name = new string(' ', Spacing);
+
+                if (i < Inventory.Count) {
+                    var item = Inventory[i];
+
+                    if (item != null) {
+                        name = item.Name + name;
+                        name = name.Substring(0, Spacing);
+                    }
+                }
+
+                stringBuilder.Append($"{i + 1}.{name} ");
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }
