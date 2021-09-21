@@ -23,9 +23,9 @@ namespace DungeonCrawler
             EquippedSlot = 0;
             Inventory.Add(new Equipment("sword"));
             Inventory.Add(new Equipment("sword"));
-            Inventory.Add(new Equipment("sword"));
-            Inventory.Add(new Equipment("sword"));
-            Inventory.Add(new Equipment("sword"));
+            //Inventory.Add(new Equipment("sword"));
+            //Inventory.Add(new Equipment("sword"));
+            //Inventory.Add(new Equipment("sword"));
 
 
         }
@@ -104,10 +104,32 @@ namespace DungeonCrawler
                     }
                 }
 
-                stringBuilder.Append($"{i + 1}.{name} ");
+                if (i == EquippedSlot)
+                {
+                    stringBuilder.Append($"{i + 1}.>{name} ");
+                }
+                else
+                {
+                    stringBuilder.Append($"{i + 1}. {name} ");
+                }
             }
 
             return stringBuilder.ToString();
+        }
+
+        // returns true if input was consumed
+        public bool HandleInput(char input)
+        {
+            if (int.TryParse("" + input, out int i))
+            {
+                if (i >= 1 && i <= MaxInventorySize)
+                {
+                    EquippedSlot = i - 1;
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

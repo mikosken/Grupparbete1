@@ -47,7 +47,10 @@ namespace DungeonCrawler
                 // Do enemy actions.
 
                 // Do player actions.
-                Player.Move(input.KeyChar);
+                if (!Player.HandleInput(input.KeyChar))
+                {
+                    Player.Move(input.KeyChar);
+                }
                 WorldMap.NextTurn();
                 WorldMap.DrawMap();
 
