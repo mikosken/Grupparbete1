@@ -12,8 +12,8 @@ namespace DungeonCrawler
         public int MapHeight { get; set; }
         public string MapRepresentation { get; set; }
 
-        private MapTile[,] staticMap; // Walls, floors, etc.
-        private IRepresentable[,] dynamicMap; // Stuff that move or change, player, monsters, items, etc.
+        public MapTile[,] staticMap; // Walls, floors, etc.
+        public IRepresentable[,] dynamicMap; // Stuff that move or change, player, monsters, items, etc.
 
         public bool PlaceDynamic(int x, int y, IRepresentable representable)
         {
@@ -25,14 +25,16 @@ namespace DungeonCrawler
             return false;
         }
 
-        public IRepresentable GetDynamic(int x, int y) {
+        public IRepresentable GetDynamic(int x, int y)
+        {
             if (!IsInBounds(x, y))
                 return null;
 
             return dynamicMap[x, y];
         }
 
-        public bool RemoveDynamic(int x, int y) {
+        public bool RemoveDynamic(int x, int y)
+        {
             if (!IsInBounds(x, y))
                 return false;
 
@@ -99,8 +101,8 @@ namespace DungeonCrawler
             return true;
         }
 
-
-        public bool Move(int fromX, int fromY, char direction) {
+        public bool Move(int fromX, int fromY, char direction)
+        {
             var target = GetMoveTargetCoordinates(fromX, fromY, direction);
 
             return Move(fromX, fromY, target.x, target.y);
@@ -199,7 +201,8 @@ namespace DungeonCrawler
             return true;
         }
 
-        public void NextTurn() {
+        public void NextTurn()
+        {
             for (int j = 0; j < MapHeight; j++)
             {
                 for (int i = 0; i < MapWidth; i++)
