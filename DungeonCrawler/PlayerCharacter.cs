@@ -131,7 +131,14 @@ namespace DungeonCrawler
 
             if (input == 'u')
             {
-                if (Inventory[EquippedSlot] != null)
+                if (EquippedSlot >= Inventory.Count)
+                    return false;
+
+                if (Inventory[EquippedSlot] == null)
+                    return false;
+
+                // for now, only stuff that heals can be used
+                if (Inventory[EquippedSlot].Heal > 0)
                 {
                     Health += Inventory[EquippedSlot].Heal;
                     Inventory.RemoveAt(EquippedSlot);
