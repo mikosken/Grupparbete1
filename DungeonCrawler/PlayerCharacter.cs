@@ -122,7 +122,7 @@ namespace DungeonCrawler
         {
             if (int.TryParse("" + input, out int i))
             {
-                if (i >= 1 && i <= MaxInventorySize)
+                if (i >= 1 && i <= Inventory.Count)
                 {
                     EquippedSlot = i - 1;
                     return true;
