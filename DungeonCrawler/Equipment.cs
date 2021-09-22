@@ -26,6 +26,20 @@ namespace DungeonCrawler
                     Damage = 50;
                     Heal = 0;
                     break;
+                case "axe":
+                    Name = "Axe";
+                    UseVerb = "Chop";
+                    Representation = '9';
+                    Damage = 60;
+                    Heal = 0;
+                    break;
+                case "flower":
+                    Name = "Flower";
+                    UseVerb = "Swipe";
+                    Representation = 'f';
+                    Damage = 1;
+                    Heal = 0;
+                    break;
 
                 case "potion":
                     Name = "Potion";

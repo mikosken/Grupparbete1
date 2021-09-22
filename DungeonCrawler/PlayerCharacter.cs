@@ -23,8 +23,8 @@ namespace DungeonCrawler
             EquippedSlot = 0;
             Inventory.Add(new Equipment("sword"));
             Inventory.Add(new Equipment("potion"));
-            //Inventory.Add(new Equipment("sword"));
-            //Inventory.Add(new Equipment("sword"));
+            Inventory.Add(new Equipment("flower"));
+            Inventory.Add(new Equipment("axe"));
             //Inventory.Add(new Equipment("sword"));
         }
 
