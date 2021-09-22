@@ -18,7 +18,7 @@ namespace DungeonCrawler
             //UpdateWindowSize();
             WindowWidth = 100;
             WindowHeight = 50;
-            
+
             WorldMap = new DungeonMap(WindowWidth, WindowHeight - 3);
             Player = new PlayerCharacter(2, 2, WorldMap, '@');
 
@@ -27,7 +27,6 @@ namespace DungeonCrawler
             // place equipment on map TEST
             Equipment sword = new Equipment("sword");
             WorldMap.PlaceDynamic(24, 24, sword);
-
         }
 
         public void MainLoop()
@@ -55,6 +54,7 @@ namespace DungeonCrawler
                 WorldMap.DrawMap();
 
                 Console.WriteLine(Player.GetInventoryString());
+                Console.WriteLine(Player.GetStatusString());
 
                 // Determine possible actions for player.
                 // Write possible actions to console.

@@ -87,7 +87,7 @@ namespace DungeonCrawler
 
         public override void NextAction()
         {
-            int damage = 35;
+            int damage = 10;
 
             var random = new Random();
             var directions = new char[] { 'w', 's', 'a', 'd' };

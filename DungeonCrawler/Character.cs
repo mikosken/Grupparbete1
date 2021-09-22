@@ -23,6 +23,7 @@ namespace DungeonCrawler
             PositionY = y;
             this.map = map;
             Health = 100;
+            MaxHealth = 100;
         }
 
         public virtual (int x, int y) Move(char direction)
