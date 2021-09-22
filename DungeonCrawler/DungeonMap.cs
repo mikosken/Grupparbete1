@@ -291,7 +291,7 @@ namespace DungeonCrawler
             return true;
         }
 
-        public void NextTurn()
+        public void NextTurn(ConsoleKeyInfo input)
         {
             var characters = new List<Character>();
             for (int j = 0; j < MapHeight; j++)
@@ -302,7 +302,7 @@ namespace DungeonCrawler
                     if (obj == null)
                         continue;
 
-                    if (obj is Character)
+                    if (obj is Character && input.Key is ConsoleKey.A or ConsoleKey.W or ConsoleKey.S or ConsoleKey.D)
                         characters.Add((Character)obj);
                 }
             }

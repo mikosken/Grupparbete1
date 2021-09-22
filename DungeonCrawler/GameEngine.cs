@@ -50,7 +50,7 @@ namespace DungeonCrawler
                 {
                     Player.Move(input.KeyChar);
                 }
-                WorldMap.NextTurn();
+                WorldMap.NextTurn(input);
                 WorldMap.DrawMap();
 
                 Console.WriteLine(Player.GetInventoryString());
