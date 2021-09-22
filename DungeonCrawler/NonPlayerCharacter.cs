@@ -9,13 +9,35 @@ namespace DungeonCrawler
     internal class NonPlayerCharacter : Character
     {
         private IRepresentable loot;
+        private int minDamage;
+        private int maxDamage;
 
-        public NonPlayerCharacter(int x, int y, DungeonMap map, char representation) : base(x, y, map)
+        public NonPlayerCharacter(int x, int y, DungeonMap map, string type) : base(x, y, map)
         {
-            Representation = representation;
-
             // Randomize loot?
             loot = new CoinItem();
+
+            switch (type)
+            {
+                case "bat":
+                    Representation = 'b';
+                    minDamage = 10;
+                    maxDamage = 20;
+                    break;
+                case "goblin":
+                    Representation = 'g';
+                    minDamage = 20;
+                    maxDamage = 40;
+                    break;
+                case "skeleton":
+                    Representation = 's';
+                    minDamage = 10;
+                    maxDamage = 50;
+                    break;
+
+                default:
+                    throw new ArgumentException("No such NPC type!");
+            }
         }
 
         public (int x, int y) FindPlayerCoordinates()
@@ -87,9 +109,9 @@ namespace DungeonCrawler
 
         public override void NextAction()
         {
-            int damage = 10;
-
             var random = new Random();
+            int damage = random.Next(minDamage, maxDamage + 1);
+
             var directions = new char[] { 'w', 's', 'a', 'd' };
 
             int playerDist = PlayerDistance();

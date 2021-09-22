@@ -255,7 +255,7 @@ namespace DungeonCrawler
                 int y = random.Next(1, MapHeight - 1);
                 if (CanMoveTo(x, y))
                 {
-                    dynamicMap[x, y] = new NonPlayerCharacter(x, y, this, 'e');
+                    dynamicMap[x, y] = new NonPlayerCharacter(x, y, this, random.Next(10) < 3 ? "goblin" : "bat");
                 }
             }
         }
