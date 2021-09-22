@@ -158,7 +158,95 @@ namespace DungeonCrawler
         {
             BuildStaticRect(0, 0, MapWidth, MapHeight, new MapTile("wall"), new MapTile("wall"));
             BuildStaticRect(0, 0, MapWidth, MapHeight, new MapTile("wall"), new MapTile("floor"));
-            BuildStaticRect(5, 5, 5, 5, new MapTile("wall"), new MapTile("wall"));
+            // Utanför kammaren
+
+            // Uppe
+            BuildStaticRect(1, 3, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 2, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(5, 7, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 6, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(1, 11, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 10, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(5, 15, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 14, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(1, 19, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 18, 3, 1, new MapTile("wall"), new MapTile("wall"));
+
+            // mitten
+            BuildStaticRect(1, 23, 5, 1, new MapTile("wall"), new MapTile("wall"));
+
+            // Nere
+            BuildStaticRect(1, 27, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 28, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(5, 31, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 32, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(1, 35, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 36, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(5, 39, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 40, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(1, 43, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(3, 44, 3, 1, new MapTile("wall"), new MapTile("wall"));
+
+            // Ingången / Mitten
+            BuildStaticRect(8, 24, 2, 21, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(8, 1, 2, 22, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(10, 21, 15, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(9, 24, 5, 2, new MapTile("wall"), new MapTile("wall"));
+
+            //
+            // Inne i kammaren
+            //
+
+            // Uppe
+            BuildStaticRect(18, 11, 2, 11, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(18, 10, 20, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(24, 14, 30, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(41, 6, 2, 10, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(13, 6, 29, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(29, 21, 55, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(88, 21, 12, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(65, 5, 35, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(42, 9, 53, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(65, 13, 35, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(60, 17, 35, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(58, 3, 2, 18, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(18, 2, 42, 2, new MapTile("wall"), new MapTile("wall"));
+
+            // Hinder uppe
+            BuildStaticRect(13, 18, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(15, 17, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(12, 14, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(10, 13, 3, 1, new MapTile("wall"), new MapTile("wall"));
+
+            // Nere
+            BuildStaticRect(13, 24, 2, 15, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(15, 31, 20, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(19, 24, 2, 6, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(21, 24, 40, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(66, 24, 33, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(13, 40, 40, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(57, 40, 42, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(19, 28, 20, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(39, 28, 2, 12, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(49, 28, 2, 12, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(59, 26, 2, 14, new MapTile("wall"), new MapTile("wall"));
+
+            // Hinder nere
+            BuildStaticRect(41, 36, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(43, 37, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(46, 32, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(44, 33, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(56, 35, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(54, 36, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(51, 29, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(53, 30, 3, 1, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(65, 32, 30, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(79, 26, 3, 13, new MapTile("wall"), new MapTile("wall"));
+
+            // Under kammaren
+            // Hemlig gång med extra liv??
+            BuildStaticRect(9, 43, 80, 2, new MapTile("wall"), new MapTile("wall"));
+            BuildStaticRect(89, 43, 2, 3, new MapTile("wall"), new MapTile("wall"));
 
             var random = new Random();
             for (int i = 0; i < 5; i++)
