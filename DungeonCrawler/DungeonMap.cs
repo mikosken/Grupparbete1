@@ -249,7 +249,7 @@ namespace DungeonCrawler
             BuildStaticRect(89, 43, 2, 3, new MapTile("wall"), new MapTile("wall"));
 
             var random = new Random();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 30; i++)
             {
                 int x = random.Next(1, MapWidth - 1);
                 int y = random.Next(1, MapHeight - 1);
