@@ -149,6 +149,7 @@ namespace DungeonCrawler
                 {
                     Health += Inventory[EquippedSlot].Heal;
                     Inventory.RemoveAt(EquippedSlot);
+                    EquippedSlot = 0;   // To prevent bug when equipped slot is empty
                     return true;
                 }
             }
