@@ -26,15 +26,13 @@ namespace DungeonCrawler
             //Inventory.Add(new Equipment("sword"));
             //Inventory.Add(new Equipment("sword"));
             //Inventory.Add(new Equipment("sword"));
-
-
         }
 
         public override (int x, int y) Move(char direction)
         {
             var nextPosition = map.GetMoveTargetCoordinates(PositionX, PositionY, direction);
 
-            var dynamic = map.GetDynamic(nextPosition.x, nextPosition.y);   
+            var dynamic = map.GetDynamic(nextPosition.x, nextPosition.y);
 
             if (dynamic != null)
             {
@@ -68,6 +66,15 @@ namespace DungeonCrawler
             (int newX, int newY) = map.Move(PositionX, PositionY, nextPosition.x, nextPosition.y);
 
             return (newX, newY);
+        }
+
+        public string GetStatusString()
+        {
+            string attackDamage = "10"; // Default damage.
+
+            if (Inventory.Count > EquippedSlot && Inventory[EquippedSlot] != null)
+                attackDamage = Inventory[EquippedSlot].Damage.ToString();
+            return $"HP: {Health}/{MaxHealth}, Attack: {attackDamage}";
         }
 
         public void AddCoins(int coins)
