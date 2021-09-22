@@ -293,6 +293,7 @@ namespace DungeonCrawler
 
         public void NextTurn()
         {
+            var characters = new List<Character>();
             for (int j = 0; j < MapHeight; j++)
             {
                 for (int i = 0; i < MapWidth; i++)
@@ -302,8 +303,13 @@ namespace DungeonCrawler
                         continue;
 
                     if (obj is Character)
-                        ((Character)obj).NextAction();
+                        characters.Add((Character)obj);
                 }
+            }
+
+            foreach (var c in characters)
+            {
+                c.NextAction();
             }
         }
     }
