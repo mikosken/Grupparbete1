@@ -40,9 +40,6 @@ namespace DungeonCrawler
 
             Equipment axe = new Equipment("axe");
             WorldMap.PlaceDynamic(84, 27, axe);
-
-            CoinItem coin = new CoinItem(75, '£');
-            WorldMap.PlaceDynamic(95, 45, coin);
         }
 
         public void MainLoop()
