@@ -40,11 +40,7 @@ namespace DungeonCrawler
                 case "shovel":
                     Name = "Shovel";
                     UseVerb = "Swipe";
-<<<<<<< HEAD
-                    Representation = 'f';
-=======
-                    Representation = '*';
->>>>>>> d2f8f5ae52fe1abeaa3faeb36a5fb34f1fb5808c
+                    Representation = 's';
                     Damage = 10;
                     Heal = 0;
                     break;

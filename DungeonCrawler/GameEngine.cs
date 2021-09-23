@@ -40,7 +40,6 @@ namespace DungeonCrawler
 
             Equipment axe = new Equipment("axe");
             WorldMap.PlaceDynamic(84, 27, axe);
-<<<<<<< HEAD
             WorldMap.PlaceDynamic(96, 3, axe);
 
             var random = new Random();
@@ -53,8 +52,6 @@ namespace DungeonCrawler
                     WorldMap.dynamicMap[x, y] = new NonPlayerCharacter(x, y, WorldMap, random.Next(10) < 3 ? "goblin" : "bat");
                 }
             }
-=======
->>>>>>> d2f8f5ae52fe1abeaa3faeb36a5fb34f1fb5808c
         }
 
         public void MainLoop()
