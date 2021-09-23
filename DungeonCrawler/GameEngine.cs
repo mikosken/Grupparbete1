@@ -40,6 +40,18 @@ namespace DungeonCrawler
 
             Equipment axe = new Equipment("axe");
             WorldMap.PlaceDynamic(84, 27, axe);
+            WorldMap.PlaceDynamic(96, 3, axe);
+
+            var random = new Random();
+            for (int i = 0; i < 30; i++)
+            {
+                int x = random.Next(1, WorldMap.MapWidth - 1);
+                int y = random.Next(1, WorldMap.MapHeight - 1);
+                if (WorldMap.CanMoveTo(x, y))
+                {
+                    WorldMap.dynamicMap[x, y] = new NonPlayerCharacter(x, y, WorldMap, random.Next(10) < 3 ? "goblin" : "bat");
+                }
+            }
         }
 
         public void MainLoop()
@@ -52,7 +64,11 @@ namespace DungeonCrawler
                 //Console.WindowHeight = WindowHeight;
                 //Console.WindowWidth = WindowWidth;
                 // Check victory condition.
-                //if (IsVictory()) DrawVictoryScreen();
+                if (IsVictory())
+                {
+                    DrawVictoryScreen();
+                    break;
+                }
                 // Check Game Over conditions.
                 //if (IsGameOver()) DrawGameOver();
 
@@ -99,7 +115,7 @@ namespace DungeonCrawler
 
         public bool IsVictory()
         {
-            throw new NotImplementedException();
+            if (Player.CoinPurse >= 100) return true;
 
             return false;
         }
@@ -118,7 +134,12 @@ namespace DungeonCrawler
 
         public void DrawVictoryScreen()
         {
-            throw new NotImplementedException();
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("A WINNER IS YOU!");
+            Console.WriteLine("YOU FOUND ENOUGH COINS TO RETIRE IN LUXURY!");
         }
     }
 }

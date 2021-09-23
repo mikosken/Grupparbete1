@@ -28,6 +28,15 @@ namespace DungeonCrawler
             MaxHealth = 100;
         }
 
+        public Character(int x, int y, DungeonMap map, int health, int maxHealth)
+        {
+            PositionX = x;
+            PositionY = y;
+            this.map = map;
+            Health = health;
+            MaxHealth = maxHealth;
+        }
+
         public virtual (int x, int y) Move(char direction)
         {
             (int newX, int newY) = map.Move(PositionX, PositionY, direction);
