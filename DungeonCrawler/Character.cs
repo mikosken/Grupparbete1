@@ -15,6 +15,8 @@ namespace DungeonCrawler
         public int PositionX { get; set; }
         public int PositionY { get; set; }
 
+        public int CoinPurse { get; set; }
+
         protected DungeonMap map;
 
         public Character(int x, int y, DungeonMap map)
@@ -57,6 +59,16 @@ namespace DungeonCrawler
         public virtual void OnDeath()
         {
             map.RemoveDynamic(PositionX, PositionY);
+        }
+
+        public void AddCoins(int coins)
+        {
+            CoinPurse += coins;
+        }
+
+        public void SubtractCoins(int coins)
+        {
+            throw new NotImplementedException();
         }
     }
 }
