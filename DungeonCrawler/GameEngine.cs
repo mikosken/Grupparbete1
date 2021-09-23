@@ -35,10 +35,12 @@ namespace DungeonCrawler
             Equipment potion = new Equipment("potion");
             WorldMap.PlaceDynamic(85, 45, potion);
             WorldMap.PlaceDynamic(11, 26, potion);
+            WorldMap.PlaceDynamic(21, 27, potion);
             WorldMap.PlaceDynamic(14, 20, potion);
-            WorldMap.PlaceDynamic(45, 39, potion);
+            WorldMap.PlaceDynamic(95, 45, potion);
             WorldMap.PlaceDynamic(44, 12, potion);
             WorldMap.PlaceDynamic(96, 3, potion);
+            WorldMap.PlaceDynamic(50, 8, potion);
 
             Equipment axe = new Equipment("axe");
             WorldMap.PlaceDynamic(84, 27, axe);
@@ -56,6 +58,9 @@ namespace DungeonCrawler
                 if (WorldMap.CanMoveTo(x, y))
                 {
                     WorldMap.dynamicMap[x, y] = new NonPlayerCharacter(x, y, WorldMap, random.Next(10) < 3 ? random.Next(10) < 5 ? "goblin" : "skeleton" : "bat");
+                    WorldMap.dynamicMap[46, 37] = new NonPlayerCharacter(x, y, WorldMap, "skeleton");
+                    WorldMap.dynamicMap[47, 37] = new NonPlayerCharacter(x, y, WorldMap, "skeleton");
+                    WorldMap.dynamicMap[48, 37] = new NonPlayerCharacter(x, y, WorldMap, "skeleton");
                 }
             }
         }
@@ -72,7 +77,6 @@ namespace DungeonCrawler
 
             while (input.Key != ConsoleKey.Escape)
             {
- 
                 if (IsVictory())
                 {
                     DrawVictoryScreen();
