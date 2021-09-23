@@ -21,6 +21,7 @@ namespace DungeonCrawler
             EquippedSlot = 0;
 
             Inventory.Add(new Equipment("shovel"));
+            Inventory.Add(new Equipment("potion"));
         }
 
         public override (int x, int y) Move(char direction)
