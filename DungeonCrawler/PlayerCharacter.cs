@@ -21,11 +21,8 @@ namespace DungeonCrawler
             Inventory = new List<Equipment>();
 
             EquippedSlot = 0;
-            Inventory.Add(new Equipment("sword"));
-            Inventory.Add(new Equipment("potion"));
-            Inventory.Add(new Equipment("flower"));
-            Inventory.Add(new Equipment("axe"));
-            //Inventory.Add(new Equipment("sword"));
+
+            Inventory.Add(new Equipment("shovel"));
         }
 
         public override (int x, int y) Move(char direction)

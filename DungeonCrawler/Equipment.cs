@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler
 {
-    class Equipment : IRepresentable
+    internal class Equipment : IRepresentable
     {
         public string Name { get; set; }
         public string UseVerb { get; set; } // "Swing", "Drink", etc.
@@ -17,8 +17,10 @@ namespace DungeonCrawler
         public int Damage { get; set; }
         public int Heal { get; set; }
 
-        public Equipment(string type) {
-            switch (type) {
+        public Equipment(string type)
+        {
+            switch (type)
+            {
                 case "sword":
                     Name = "Sword";
                     UseVerb = "Swing";
@@ -26,6 +28,7 @@ namespace DungeonCrawler
                     Damage = 50;
                     Heal = 0;
                     break;
+
                 case "axe":
                     Name = "Axe";
                     UseVerb = "Chop";
@@ -33,8 +36,9 @@ namespace DungeonCrawler
                     Damage = 60;
                     Heal = 0;
                     break;
-                case "flower":
-                    Name = "Flower";
+
+                case "shovel":
+                    Name = "Shovel";
                     UseVerb = "Swipe";
                     Representation = 'f';
                     Damage = 1;
@@ -52,7 +56,6 @@ namespace DungeonCrawler
                 default:
                     throw new ArgumentException("No such equipment!");
             }
-
         }
     }
 }
