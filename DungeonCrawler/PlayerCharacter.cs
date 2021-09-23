@@ -74,7 +74,7 @@ namespace DungeonCrawler
 
             if (Inventory.Count > EquippedSlot && Inventory[EquippedSlot] != null)
                 attackDamage = Inventory[EquippedSlot].Damage.ToString();
-            return $"HP: {Health}/{MaxHealth}, Attack: {attackDamage}";
+            return $"HP: {Health}/{MaxHealth}, Attack: {attackDamage}, Gold: {coinPurse}";
         }
 
         public void AddCoins(int coins)
