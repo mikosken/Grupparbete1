@@ -26,7 +26,7 @@ namespace DungeonCrawler
                     Health = 25;
                     MaxHealth = 25;
 
-                    loot = new CoinItem(10, '$');
+                    loot = new CoinItem(5, '$');
                     break;
 
                 case "goblin":
@@ -34,7 +34,7 @@ namespace DungeonCrawler
                     minDamage = 20;
                     maxDamage = 40;
 
-                    loot = new CoinItem(20, '$');
+                    loot = new CoinItem(10, '$');
                     break;
 
                 case "skeleton":
@@ -42,7 +42,7 @@ namespace DungeonCrawler
                     minDamage = 10;
                     maxDamage = 50;
 
-                    loot = new CoinItem(25, '$');
+                    loot = new CoinItem(15, '$');
                     break;
 
                 default:
