@@ -23,6 +23,7 @@ namespace DungeonCrawler
         {
             Value = 1;
             Representation = '$';
+            Representation = '£';
         }
     }
 }
