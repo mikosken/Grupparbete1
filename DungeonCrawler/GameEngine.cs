@@ -140,8 +140,7 @@ namespace DungeonCrawler
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("GAME OVER");
-            Console.WriteLine("YOU LOSE BIG TIME!");
+            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "GAME OVER\"YOU LOSE BIG TIME!"));
         }
 
         public void DrawVictoryScreen()
@@ -150,8 +149,7 @@ namespace DungeonCrawler
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("A WINNER IS YOU!");
-            Console.WriteLine("YOU FOUND ENOUGH COINS TO RETIRE IN LUXURY!");
+            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "A WINNER IS YOU!\"YOU FOUND ENOUGH COINS TO RETIRE IN LUXURY!"));
         }
     }
 }
