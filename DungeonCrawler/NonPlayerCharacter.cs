@@ -23,6 +23,8 @@ namespace DungeonCrawler
                     Representation = 'b';
                     minDamage = 10;
                     maxDamage = 20;
+                    Health = 25;
+                    MaxHealth = 25;
 
                     loot = new CoinItem(10, '$');
                     break;

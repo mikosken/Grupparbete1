@@ -41,7 +41,7 @@ namespace DungeonCrawler
                     Name = "Shovel";
                     UseVerb = "Swipe";
                     Representation = 'f';
-                    Damage = 1;
+                    Damage = 10;
                     Heal = 0;
                     break;
 

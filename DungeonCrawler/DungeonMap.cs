@@ -247,17 +247,6 @@ namespace DungeonCrawler
             // Hemlig gång med extra liv??
             BuildStaticRect(9, 43, 80, 2, new MapTile("wall"), new MapTile("wall"));
             BuildStaticRect(89, 43, 2, 3, new MapTile("wall"), new MapTile("wall"));
-
-            var random = new Random();
-            for (int i = 0; i < 30; i++)
-            {
-                int x = random.Next(1, MapWidth - 1);
-                int y = random.Next(1, MapHeight - 1);
-                if (CanMoveTo(x, y))
-                {
-                    dynamicMap[x, y] = new NonPlayerCharacter(x, y, this, random.Next(10) < 3 ? "goblin" : "bat");
-                }
-            }
         }
 
         public bool IsInBounds(int x, int y)
