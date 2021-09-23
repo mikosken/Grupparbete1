@@ -32,23 +32,23 @@ namespace DungeonCrawler
                 case "axe":
                     Name = "Axe";
                     UseVerb = "Chop";
-                    Representation = '9';
-                    Damage = 60;
+                    Representation = '!';
+                    Damage = 80;
                     Heal = 0;
                     break;
 
                 case "shovel":
                     Name = "Shovel";
                     UseVerb = "Swipe";
-                    Representation = 'f';
-                    Damage = 1;
+                    Representation = '*';
+                    Damage = 10;
                     Heal = 0;
                     break;
 
                 case "potion":
                     Name = "Potion";
                     UseVerb = "Drink";
-                    Representation = 'v';
+                    Representation = 'X';
                     Damage = 0;
                     Heal = 50;
                     break;

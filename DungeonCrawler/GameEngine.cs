@@ -29,7 +29,6 @@ namespace DungeonCrawler
             // place equipment on map TEST
             Equipment sword = new Equipment("sword");
             WorldMap.PlaceDynamic(87, 45, sword);
-            WorldMap.PlaceDynamic(22, 27, sword);
 
             Equipment potion = new Equipment("potion");
             WorldMap.PlaceDynamic(85, 45, potion);
@@ -37,10 +36,10 @@ namespace DungeonCrawler
             WorldMap.PlaceDynamic(14, 20, potion);
             WorldMap.PlaceDynamic(45, 39, potion);
             WorldMap.PlaceDynamic(44, 12, potion);
+            WorldMap.PlaceDynamic(96, 3, potion);
 
             Equipment axe = new Equipment("axe");
             WorldMap.PlaceDynamic(84, 27, axe);
-            WorldMap.PlaceDynamic(96, 3, axe);
         }
 
         public void MainLoop()
