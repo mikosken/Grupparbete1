@@ -42,6 +42,9 @@ namespace DungeonCrawler
             WorldMap.PlaceDynamic(84, 27, axe);
             WorldMap.PlaceDynamic(96, 3, axe);
 
+            CoinItem coin = new CoinItem(75, '£');
+            WorldMap.PlaceDynamic(95, 45, coin);
+
             var random = new Random();
             for (int i = 0; i < 30; i++)
             {
