@@ -6,11 +6,9 @@ namespace DungeonCrawler
     {
         private static void Main(string[] args)
         {
-            // Initialize();
             GameEngine gm = new GameEngine();
             gm.MainLoop();
 
-            // DeInitialize();
         }
     }
 }

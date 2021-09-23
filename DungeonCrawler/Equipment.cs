@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler
 {
+    /// <summary>
+    /// Parent class for all Equipment objects
+    /// </summary>
     internal class Equipment : IRepresentable
     {
         public string Name { get; set; }
-        public string UseVerb { get; set; } // "Swing", "Drink", etc.
         public char Representation { get; set; }
         public int PositionX { get; set; }
         public int PositionY { get; set; }
@@ -23,7 +25,6 @@ namespace DungeonCrawler
             {
                 case "sword":
                     Name = "Sword";
-                    UseVerb = "Swing";
                     Representation = '+';
                     Damage = 50;
                     Heal = 0;
@@ -31,7 +32,6 @@ namespace DungeonCrawler
 
                 case "axe":
                     Name = "Axe";
-                    UseVerb = "Chop";
                     Representation = '!';
                     Damage = 80;
                     Heal = 0;
@@ -39,7 +39,6 @@ namespace DungeonCrawler
 
                 case "shovel":
                     Name = "Shovel";
-                    UseVerb = "Swipe";
                     Representation = '>';
                     Damage = 10;
                     Heal = 0;
@@ -47,7 +46,6 @@ namespace DungeonCrawler
 
                 case "potion":
                     Name = "Potion";
-                    UseVerb = "Drink";
                     Representation = 'X';
                     Damage = 0;
                     Heal = 50;

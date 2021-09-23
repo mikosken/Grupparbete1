@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler
 {
+    /// <summary>
+    /// Game engine class. Sets up the game and runs gameloop
+    /// </summary>
     internal class GameEngine
     {
         public int WindowWidth { get; set; }
@@ -15,7 +18,6 @@ namespace DungeonCrawler
 
         public GameEngine()
         {
-            //UpdateWindowSize();
             WindowWidth = 100;
             WindowHeight = 50;
             Console.WindowWidth = WindowWidth;
@@ -26,7 +28,7 @@ namespace DungeonCrawler
 
             WorldMap.PlaceDynamic(2, 2, Player);
 
-            // place equipment on map TEST
+            // Place equipment on map
             Equipment sword = new Equipment("sword");
             WorldMap.PlaceDynamic(87, 45, sword);
 
@@ -45,6 +47,7 @@ namespace DungeonCrawler
             CoinItem coin = new CoinItem(50, '£');
             WorldMap.PlaceDynamic(95, 45, coin);
 
+            // place enemies on map
             var random = new Random();
             for (int i = 0; i < 30; i++)
             {
@@ -57,6 +60,9 @@ namespace DungeonCrawler
             }
         }
 
+        /// <summary>
+        /// Main loop for the game. Runs until ESC, game over or game won
+        /// </summary>
         public void MainLoop()
         {
             DrawStartScreen();
@@ -66,24 +72,17 @@ namespace DungeonCrawler
 
             while (input.Key != ConsoleKey.Escape)
             {
-                //Console.WindowHeight = WindowHeight;
-                //Console.WindowWidth = WindowWidth;
-                // Check victory condition.
+ 
                 if (IsVictory())
                 {
                     DrawVictoryScreen();
                     break;
                 }
-                // Check Game Over conditions.
-                //if (IsGameOver()) DrawGameOver();
                 if (IsGameOver())
                 {
                     DrawGameOver();
                     break;
                 }
-                // Do enemy actions.
-
-                // Do player actions.
                 if (!Player.HandleInput(input.KeyChar))
                 {
                     Player.Move(input.KeyChar);
@@ -94,9 +93,6 @@ namespace DungeonCrawler
                 Console.WriteLine(Player.GetInventoryString());
                 Console.WriteLine(Player.GetStatusString());
 
-                // Determine possible actions for player.
-                // Write possible actions to console.
-                // Get input.
                 input = Console.ReadKey(true);
             }
         }
@@ -110,10 +106,6 @@ namespace DungeonCrawler
             WindowHeight = Console.WindowHeight;
         }
 
-        // World Map object.
-
-        // Interface text.
-
         /// <summary>
         /// Draws new data to console window.
         /// </summary>
@@ -122,6 +114,9 @@ namespace DungeonCrawler
             WorldMap.DrawMap();
         }
 
+        /// <summary>
+        /// Check if game is won
+        /// </summary>
         public bool IsVictory()
         {
             if (Player.CoinPurse >= 100) return true;
@@ -129,6 +124,9 @@ namespace DungeonCrawler
             return false;
         }
 
+        /// <summary>
+        /// Check if game is over
+        /// </summary>
         public bool IsGameOver()
         {
             if (Player.Health <= 0) return true;
@@ -136,6 +134,9 @@ namespace DungeonCrawler
             return false;
         }
 
+        /// <summary>
+        /// Draws game over screen
+        /// </summary>
         public void DrawGameOver()
         {
             Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -145,6 +146,9 @@ namespace DungeonCrawler
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "GAME OVER! YOU LOSE BIG TIME!"));
         }
 
+        /// <summary>
+        /// Draws game won screen
+        /// </summary>
         public void DrawVictoryScreen()
         {
             Console.BackgroundColor = ConsoleColor.Green;
@@ -154,6 +158,9 @@ namespace DungeonCrawler
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "A WINNER IS YOU!\"YOU FOUND ENOUGH COINS TO RETIRE IN LUXURY!"));
         }
 
+        /// <summary>
+        /// Draws startscreen to the console
+        /// </summary>
         public int DrawStartScreen()
         {
             Console.WriteLine();
@@ -185,7 +192,6 @@ namespace DungeonCrawler
 
             while (input.Key != ConsoleKey.Spacebar)
             {
-                // Implement possible menu-choices here.
                 Console.WriteLine();
                 Console.WriteLine("Press space to continue.");
                 input = Console.ReadKey(true);

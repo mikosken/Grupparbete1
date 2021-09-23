@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler
 {
+    /// <summary>
+    /// Builds the static map, builds and updates dynamic map after every turn
+    /// </summary>
     internal class DungeonMap
     {
         public int MapWidth { get; set; }
         public int MapHeight { get; set; }
-        public string MapRepresentation { get; set; }
 
-        public MapTile[,] staticMap; // Walls, floors, etc.
+        public MapTile[,] staticMap; // Walls, floors.
         public IRepresentable[,] dynamicMap; // Stuff that move or change, player, monsters, items, etc.
 
+        /// <summary>
+        /// Places objects that implement the IRepresentable interface on dynamic map
+        /// </summary>
         public bool PlaceDynamic(int x, int y, IRepresentable representable)
         {
             if (IsInBounds(x, y) && dynamicMap[x, y] == null)
@@ -25,6 +30,9 @@ namespace DungeonCrawler
             return false;
         }
 
+        /// <summary>
+        /// Retrieves the IRepresentable object located on DynamicMap given coordinate x, y
+        /// </summary>
         public IRepresentable GetDynamic(int x, int y)
         {
             if (!IsInBounds(x, y))
@@ -33,6 +41,9 @@ namespace DungeonCrawler
             return dynamicMap[x, y];
         }
 
+        /// <summary>
+        /// Removes object from DynamicMap
+        /// </summary>
         public bool RemoveDynamic(int x, int y)
         {
             if (!IsInBounds(x, y))
@@ -56,12 +67,18 @@ namespace DungeonCrawler
             DefaultMap();
         }
 
+        /// <summary>
+        /// Draws the map to the console
+        /// </summary>
         public void DrawMap()
         {
             Console.SetCursorPosition(0, 0);
             Console.Write(GetRepresentation());
         }
 
+        /// <summary>
+        /// Gets a string representation of dynamicMap and staticMap together
+        /// </summary>
         public string GetRepresentation()
         {
             StringBuilder sb = new StringBuilder();
@@ -79,12 +96,14 @@ namespace DungeonCrawler
                         sb.Append(staticMap[i, j].Representation);
                     }
                 }
-                //if (j < MapHeight - 1)
                 sb.Append('\n');
             }
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Takes a position and target coordinates for a move. Returns target coordinates if move is valid
+        /// </summary>
         public (int x, int y) Move(int fromX, int fromY, int toX, int toY)
         {
             if (!IsInBounds(fromX, fromY) ||
@@ -102,7 +121,9 @@ namespace DungeonCrawler
 
             return (toX, toY);
         }
-
+        /// <summary>
+        /// Takes a position and direction. Returns target coordinates if move is valid
+        /// </summary>
         public (int x, int y) Move(int fromX, int fromY, char direction)
         {
             var target = GetMoveTargetCoordinates(fromX, fromY, direction);
@@ -115,7 +136,7 @@ namespace DungeonCrawler
         /// </summary>
         public (int x, int y) GetMoveTargetCoordinates(int fromX, int fromY, char direction)
         {
-            //u, d, l, r
+            // up, down, left, right
             int toX = fromX;
             int toY = fromY;
             switch (direction)
@@ -244,16 +265,21 @@ namespace DungeonCrawler
             BuildStaticRect(79, 26, 3, 13, new MapTile("wall"), new MapTile("wall"));
 
             // Under kammaren
-            // Hemlig gång med extra liv??
             BuildStaticRect(9, 43, 80, 2, new MapTile("wall"), new MapTile("wall"));
             BuildStaticRect(89, 43, 2, 3, new MapTile("wall"), new MapTile("wall"));
         }
 
+        /// <summary>
+        /// Check if coordinates are in bounds of the map
+        /// </summary>
         public bool IsInBounds(int x, int y)
         {
             return x >= 0 && x < MapWidth && y >= 0 && y < MapHeight;
         }
 
+        /// <summary>
+        /// Build the edge boundary of static map
+        /// </summary>
         public bool BuildStaticRect(int x, int y, int width, int height, MapTile borderTile, MapTile fillTile)
         {
             // Are we outside the bounds of the map?
@@ -280,6 +306,9 @@ namespace DungeonCrawler
             return true;
         }
 
+        /// <summary>
+        /// Update characters position on map for next turn
+        /// </summary>
         public void NextTurn(ConsoleKeyInfo input)
         {
             var characters = new List<Character>();

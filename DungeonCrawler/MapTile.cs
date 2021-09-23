@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler
 {
+    /// <summary>
+    /// Tiles for static map
+    /// </summary>
     internal class MapTile : ICloneable, IRepresentable
     {
         public bool Walkable { get; set; }

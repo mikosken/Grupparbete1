@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler
 {
+    /// <summary>
+    /// Player character class
+    /// </summary>
     internal class PlayerCharacter : Character
     {
         private List<Equipment> Inventory;
@@ -20,10 +23,18 @@ namespace DungeonCrawler
 
             EquippedSlot = 0;
 
+            // starting equipment
             Inventory.Add(new Equipment("shovel"));
             Inventory.Add(new Equipment("potion"));
         }
 
+        public override void NextAction()
+        {
+        }
+
+        /// <summary>
+        /// Move function for player
+        /// </summary>
         public override (int x, int y) Move(char direction)
         {
             var nextPosition = map.GetMoveTargetCoordinates(PositionX, PositionY, direction);
@@ -34,7 +45,7 @@ namespace DungeonCrawler
             {
                 if (dynamic is NonPlayerCharacter)
                 {
-                    int damage = 10; // default damage (fists)
+                    int damage = 10; // default damage
 
                     if (Inventory[EquippedSlot] != null)
                         damage = Inventory[EquippedSlot].Damage;
@@ -49,8 +60,6 @@ namespace DungeonCrawler
                 {
                     if (Inventory.Count == MaxInventorySize)
                     {
-                        // implement player choice to discard
-                        // something or leave equipment on the ground
                         return nextPosition;
                     }
 
@@ -69,6 +78,9 @@ namespace DungeonCrawler
             return (newX, newY);
         }
 
+        /// <summary>
+        /// Returns StatusString to display on screen during gameplay 
+        /// </summary>
         public string GetStatusString()
         {
             string attackDamage = "10"; // Default damage.
@@ -78,10 +90,9 @@ namespace DungeonCrawler
             return $"HP: {Health}/{MaxHealth}, Attack: {attackDamage}, Gold($): {CoinPurse}.";
         }
 
-        public override void NextAction()
-        {
-        }
-
+        /// <summary>
+        /// Gets a string of players inventory, for display during gameplay
+        /// </summary>
         public string GetInventoryString()
         {
             var stringBuilder = new StringBuilder();
@@ -116,7 +127,11 @@ namespace DungeonCrawler
             return stringBuilder.ToString();
         }
 
-        // returns true if input was consumed
+
+
+        /// <summary>
+        /// Use object in inventory. Returns true if object was consumed
+        /// </summary>
         public bool HandleInput(char input)
         {
             if (int.TryParse("" + input, out int i))
@@ -136,12 +151,11 @@ namespace DungeonCrawler
                 if (Inventory[EquippedSlot] == null)
                     return false;
 
-                // for now, only stuff that heals can be used
                 if (Inventory[EquippedSlot].Heal > 0)
                 {
                     Health += Inventory[EquippedSlot].Heal;
                     Inventory.RemoveAt(EquippedSlot);
-                    EquippedSlot = 0;   // To prevent bug when equipped slot is empty
+                    EquippedSlot = 0;   
                     return true;
                 }
             }

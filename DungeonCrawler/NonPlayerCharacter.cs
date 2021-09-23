@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler
 {
+    /// <summary>
+    /// Non player characters, different types of monsters
+    /// </summary>
     internal class NonPlayerCharacter : Character
     {
         private IRepresentable loot;
@@ -14,7 +17,6 @@ namespace DungeonCrawler
 
         public NonPlayerCharacter(int x, int y, DungeonMap map, string type) : base(x, y, map)
         {
-            // Randomize loot?
             loot = new CoinItem();
 
             switch (type)
@@ -50,6 +52,9 @@ namespace DungeonCrawler
             }
         }
 
+        /// <summary>
+        /// Returns current coordinates of the playercharacter
+        /// </summary>
         public (int x, int y) FindPlayerCoordinates()
         {
             int w = map.dynamicMap.GetLength(0); // width
@@ -68,7 +73,9 @@ namespace DungeonCrawler
 
             return (-1, -1);
         }
-
+        /// <summary>
+        /// Calculates distance from NPC to playercharacter
+        /// </summary>
         public int PlayerDistance()
         {
             int distance = -1;
@@ -80,6 +87,9 @@ namespace DungeonCrawler
             return distance;
         }
 
+        /// <summary>
+        /// Returns the direction for the next move
+        /// </summary>
         public char PlayerDirection()
         {
             (int playerX, int playerY) = FindPlayerCoordinates();
@@ -116,7 +126,9 @@ namespace DungeonCrawler
                 }
             }
         }
-
+        /// <summary>
+        /// Decides the next actino for NPC
+        /// </summary>
         public override void NextAction()
         {
             var random = new Random();
@@ -151,6 +163,9 @@ namespace DungeonCrawler
             }
         }
 
+        /// <summary>
+        /// Removes character from map after death and drops coins
+        /// </summary>
         public override void OnDeath()
         {
             map.RemoveDynamic(PositionX, PositionY);

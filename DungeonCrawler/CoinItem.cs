@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler
 {
+    /// <summary>
+    /// CoinItem to collect. Collecting enough coins = win
+    /// </summary>
     internal class CoinItem : IRepresentable
     {
         public int Value { get; set; }
