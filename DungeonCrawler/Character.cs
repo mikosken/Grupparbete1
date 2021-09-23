@@ -25,7 +25,7 @@ namespace DungeonCrawler
             PositionY = y;
             this.map = map;
             Health = 100;
-            MaxHealth = 100;
+            MaxHealth = 250;
         }
 
         public Character(int x, int y, DungeonMap map, int health, int maxHealth)
