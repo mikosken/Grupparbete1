@@ -255,7 +255,7 @@ namespace DungeonCrawler
                 int y = random.Next(1, MapHeight - 1);
                 if (CanMoveTo(x, y))
                 {
-                    dynamicMap[x, y] = new NonPlayerCharacter(x, y, this, 'e');
+                    dynamicMap[x, y] = new NonPlayerCharacter(x, y, this, random.Next(10) < 3 ? "goblin" : "bat");
                 }
             }
         }
@@ -291,8 +291,9 @@ namespace DungeonCrawler
             return true;
         }
 
-        public void NextTurn()
+        public void NextTurn(ConsoleKeyInfo input)
         {
+            var characters = new List<Character>();
             for (int j = 0; j < MapHeight; j++)
             {
                 for (int i = 0; i < MapWidth; i++)
@@ -301,9 +302,14 @@ namespace DungeonCrawler
                     if (obj == null)
                         continue;
 
-                    if (obj is Character)
-                        ((Character)obj).NextAction();
+                    if (obj is Character && input.Key is ConsoleKey.A or ConsoleKey.W or ConsoleKey.S or ConsoleKey.D)
+                        characters.Add((Character)obj);
                 }
+            }
+
+            foreach (var c in characters)
+            {
+                c.NextAction();
             }
         }
     }
