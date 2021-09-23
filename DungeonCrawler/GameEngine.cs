@@ -151,7 +151,7 @@ namespace DungeonCrawler
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "A WINNER IS YOU!\"YOU FOUND ENOUGH COINS TO RETIRE IN LUXURY!"));
+            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "A WINNER IS YOU! YOU FOUND ENOUGH COINS TO RETIRE IN LUXURY!"));
         }
 
         public int DrawStartScreen()
