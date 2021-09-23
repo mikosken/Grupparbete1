@@ -23,16 +23,24 @@ namespace DungeonCrawler
                     Representation = 'b';
                     minDamage = 10;
                     maxDamage = 20;
+
+                    loot = new CoinItem(10, '$');
                     break;
+
                 case "goblin":
                     Representation = 'g';
                     minDamage = 20;
                     maxDamage = 40;
+
+                    loot = new CoinItem(20, '$');
                     break;
+
                 case "skeleton":
                     Representation = 's';
                     minDamage = 10;
                     maxDamage = 50;
+
+                    loot = new CoinItem(25, '$');
                     break;
 
                 default:
@@ -139,6 +147,12 @@ namespace DungeonCrawler
             {
                 Move(directions[random.Next(0, directions.Length)]);
             }
+        }
+
+        public override void OnDeath()
+        {
+            map.RemoveDynamic(PositionX, PositionY);
+            map.PlaceDynamic(PositionX, PositionY, loot);
         }
     }
 }

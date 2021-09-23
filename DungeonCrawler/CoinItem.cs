@@ -8,7 +8,7 @@ namespace DungeonCrawler
 {
     internal class CoinItem : IRepresentable
     {
-        private int Value { get; set; }
+        public int Value { get; set; }
         public char Representation { get; set; }
         public int PositionX { get; set; }
         public int PositionY { get; set; }

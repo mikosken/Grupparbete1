@@ -13,8 +13,6 @@ namespace DungeonCrawler
 
         public const int MaxInventorySize = 5;
 
-        private int coinPurse = 0;
-
         public PlayerCharacter(int x, int y, DungeonMap map, char representation) : base(x, y, map)
         {
             Representation = representation;
@@ -61,6 +59,11 @@ namespace DungeonCrawler
                     Inventory.Add((Equipment)dynamic);
                     map.RemoveDynamic(nextPosition.x, nextPosition.y);
                 }
+                if (dynamic is CoinItem)   // pick up equipment
+                {
+                    AddCoins(((CoinItem)dynamic).Value);
+                    map.RemoveDynamic(nextPosition.x, nextPosition.y);
+                }
             }
 
             (int newX, int newY) = map.Move(PositionX, PositionY, nextPosition.x, nextPosition.y);
@@ -74,16 +77,7 @@ namespace DungeonCrawler
 
             if (Inventory.Count > EquippedSlot && Inventory[EquippedSlot] != null)
                 attackDamage = Inventory[EquippedSlot].Damage.ToString();
-            return $"HP: {Health}/{MaxHealth}, Attack: {attackDamage}, Gold: {coinPurse}";
-        }
-
-        public void AddCoins(int coins)
-        {
-        }
-
-        public void SubtractCoins(int coins)
-        {
-            throw new NotImplementedException();
+            return $"HP: {Health}/{MaxHealth}, Attack: {attackDamage}, Gold($): {CoinPurse}";
         }
 
         public override void NextAction()

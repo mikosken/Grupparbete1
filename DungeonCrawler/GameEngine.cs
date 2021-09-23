@@ -18,6 +18,8 @@ namespace DungeonCrawler
             //UpdateWindowSize();
             WindowWidth = 100;
             WindowHeight = 50;
+            Console.WindowWidth = WindowWidth;
+            Console.WindowHeight = WindowHeight;
 
             WorldMap = new DungeonMap(WindowWidth, WindowHeight - 3);
             Player = new PlayerCharacter(2, 2, WorldMap, '@');
