@@ -52,7 +52,7 @@ namespace DungeonCrawler
                 int y = random.Next(1, WorldMap.MapHeight - 1);
                 if (WorldMap.CanMoveTo(x, y))
                 {
-                    WorldMap.dynamicMap[x, y] = new NonPlayerCharacter(x, y, WorldMap, random.Next(10) < 3 ? "goblin" : "bat");
+                    WorldMap.dynamicMap[x, y] = new NonPlayerCharacter(x, y, WorldMap, random.Next(10) < 3 ? random.Next(10) < 5 ? "goblin" : "skeleton" : "bat");
                 }
             }
         }
