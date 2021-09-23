@@ -42,7 +42,7 @@ namespace DungeonCrawler
             WorldMap.PlaceDynamic(84, 27, axe);
             WorldMap.PlaceDynamic(96, 3, axe);
 
-            CoinItem coin = new CoinItem(75, '£');
+            CoinItem coin = new CoinItem(50, '£');
             WorldMap.PlaceDynamic(95, 45, coin);
 
             var random = new Random();
@@ -74,7 +74,11 @@ namespace DungeonCrawler
                 }
                 // Check Game Over conditions.
                 //if (IsGameOver()) DrawGameOver();
-
+                if (IsGameOver())
+                {
+                    DrawGameOver();
+                    break;
+                }
                 // Do enemy actions.
 
                 // Do player actions.
@@ -125,19 +129,24 @@ namespace DungeonCrawler
 
         public bool IsGameOver()
         {
-            throw new NotImplementedException();
+            if (Player.Health <= 0) return true;
 
             return false;
         }
 
         public void DrawGameOver()
         {
-            throw new NotImplementedException();
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER");
+            Console.WriteLine("YOU LOSE BIG TIME!");
         }
 
         public void DrawVictoryScreen()
         {
-            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.BackgroundColor = ConsoleColor.Green;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.WriteLine();
