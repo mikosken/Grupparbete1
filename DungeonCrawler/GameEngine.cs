@@ -59,6 +59,8 @@ namespace DungeonCrawler
 
         public void MainLoop()
         {
+            DrawStartScreen();
+
             ConsoleKeyInfo input;
             input = new ConsoleKeyInfo();
 
@@ -140,7 +142,7 @@ namespace DungeonCrawler
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "GAME OVER\"YOU LOSE BIG TIME!"));
+            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "GAME OVER! YOU LOSE BIG TIME!"));
         }
 
         public void DrawVictoryScreen()
