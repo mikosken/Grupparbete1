@@ -41,26 +41,24 @@ namespace DungeonCrawler
             WorldMap.PlaceDynamic(44, 12, potion);
             WorldMap.PlaceDynamic(96, 3, potion);
             WorldMap.PlaceDynamic(50, 8, potion);
+            WorldMap.PlaceDynamic(84, 30, potion);
 
             Equipment axe = new Equipment("axe");
             WorldMap.PlaceDynamic(84, 27, axe);
             WorldMap.PlaceDynamic(96, 3, axe);
 
-            CoinItem coin = new CoinItem(50, '£');
-            WorldMap.PlaceDynamic(95, 45, coin);
+            CoinItem coin = new CoinItem(40, '£');
+            WorldMap.PlaceDynamic(45, 39, coin);
 
             // place enemies on map
             var random = new Random();
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 40; i++)
             {
                 int x = random.Next(1, WorldMap.MapWidth - 1);
                 int y = random.Next(1, WorldMap.MapHeight - 1);
                 if (WorldMap.CanMoveTo(x, y))
                 {
                     WorldMap.dynamicMap[x, y] = new NonPlayerCharacter(x, y, WorldMap, random.Next(10) < 3 ? random.Next(10) < 5 ? "goblin" : "skeleton" : "bat");
-                    WorldMap.dynamicMap[46, 37] = new NonPlayerCharacter(x, y, WorldMap, "skeleton");
-                    WorldMap.dynamicMap[47, 37] = new NonPlayerCharacter(x, y, WorldMap, "skeleton");
-                    WorldMap.dynamicMap[48, 37] = new NonPlayerCharacter(x, y, WorldMap, "skeleton");
                 }
             }
         }
