@@ -144,5 +144,45 @@ namespace DungeonCrawler
             Console.WriteLine("A WINNER IS YOU!");
             Console.WriteLine("YOU FOUND ENOUGH COINS TO RETIRE IN LUXURY!");
         }
+
+        public int DrawStartScreen()
+        {
+            Console.WriteLine();
+            Console.WriteLine("You are a brave adventurer searching for loot so that you may retire in luxury.");
+            Console.WriteLine();
+            Console.WriteLine("You have entered an ancient dungeon filled with monsters that drop coins when");
+            Console.WriteLine("they are defeated.");
+            Console.WriteLine("And somewhere inside is a treasure chest with enough gold to set you for life,");
+            Console.WriteLine("if the monsters won't sate your lust for gold.");
+            Console.WriteLine();
+            Console.WriteLine("Symbols:");
+            Console.WriteLine("@: A fearless adventurer, this is you.");
+            Console.WriteLine();
+            Console.WriteLine("b: Bat, an enemy on the weaker side.");
+            Console.WriteLine("g: Goblin, a fearsome foe!");
+            Console.WriteLine("s: Skeleton, can occasionally deal even more damage than a goblin so take care.");
+            Console.WriteLine();
+            Console.WriteLine("£: A great treasure of gold coins.");
+            Console.WriteLine("$: Dropped gold coins.");
+            Console.WriteLine("+: Sword, quite useful.");
+            Console.WriteLine("!: Axe, a powerful weapon.");
+            Console.WriteLine(">: Shovel, weak as a weapon but useful when nothing else is available.");
+            Console.WriteLine("X: Potion, use this to heal your wounds.");
+            Console.WriteLine();
+            Console.WriteLine("Use w/a/s/d-keys to move around. Select equipment with 1-5. Use selected potion with 'u'.");
+
+            ConsoleKeyInfo input;
+            input = new ConsoleKeyInfo();
+
+            while (input.Key != ConsoleKey.Spacebar)
+            {
+                // Implement possible menu-choices here.
+                Console.WriteLine();
+                Console.WriteLine("Press space to continue.");
+                input = Console.ReadKey(true);
+            }
+
+            return 0;
+        }
     }
 }
