@@ -70,7 +70,7 @@ Liknande spel: https://en.wikipedia.org/wiki/Rogue_(video_game)
   
 ## Screenshots/Resultat  
   
-![Screenshot of start screen(]https://raw.githubusercontent.com/mikosken/Grupparbete1/main/Screen1.png)  
+![Screenshot of start screen](https://raw.githubusercontent.com/mikosken/Grupparbete1/main/Screen1.png)  
   
 ![Screenshot of game](https://raw.githubusercontent.com/mikosken/Grupparbete1/main/Screen2.png)  
   
