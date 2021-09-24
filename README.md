@@ -21,61 +21,46 @@ Uppdatera spelarens status (Flytta runt, healing, attack, etc.)
 Uppdatera status för alla monster (Flytta runt, healing, attack, etc.)  
 Uppdatera status för eventuellt andra saker  
 Rita ut ny karta  
-Visa alternativ  
+Visa status/alternativ  
 Ta in input  
 *Något mer, vilken ordning?*  
   
-### Character - Generisk basklass för alla karaktärer (spelare, fiender, djur, etc.)
-* Health?  
-* Strength?  
-Funktion för Move(Direction), kallar på funktion hos Kartan att uppdatera position av karaktärsobjekt till specifik ruta.  
-Kan aktivera funktioner hos objekt i inventory för att utföra andra handlingar än att gå.  
-Ska allt som kan röra sig i världen vara av basklass character, eller ska vi implementera Move() som interface?  
+### IRepresentable - Interface för objekt som ska kunna representeras på kartan  
+Alla objekt som ska ritas ut på kartan behöver ha ett tecken som representerar objektet,
+och även en position.  
+För att göra det enhetligt hur detta representeras läggs den funktionaliteten i ett interface.  
   
-Förslag: Om kartan är ASCII-baserad så kommer karaktärer behöva representeras av ett tecken, lagra detta tecken i karaktärsobjekt?  
-I så fall kan kartan för varje objekt på kartan kunna kalla på property 'Representation' för att få detta tecken.
-
+### Character - Generisk basklass för alla karaktärer (spelare, fiender, djur, etc.)
+* Health  
+* Name
+* IRepresentation
+* CoinPurse  
+Funktion för Move(Direction), kallar på funktion hos Kartan att uppdatera position av karaktärsobjekt till specifik ruta. Kan overload:as hos underklasser för att implementera mer logik.  
+Kan aktivera funktioner hos objekt i inventory för att utföra andra handlingar än att gå.  
+  
 ### Player : Character  
 Klass som ärver från Character, kontrollerbar av användaren.
 
 ### NonPlayerCharacter : Caracter
 Klass som ärver från Character, kontrolleras ej av spelaren.  
-Förslag: Kan eventuellt flytta runt lite av sig själv?  
-Om springer på spelare så gör skada?  
-
-### Equipment-objekt
-Funktion för Use(Target) som aktiverar funktion, eller ska vi implementera Use(Target) i ett interface?  
-Förslag: Innehåller ett Verb-property som säger vad det kallas att använda objektet.  
-Exempelvis "Attack" eller "Swing" för svärd, "Drink" för Potions, etc.  
-Abstrakt metod för Use(target).  
+Representerar monster i spelet, innehåller några mallar för defaultmonster i konstruktorn.  
   
-Om objekt ska kunna ligga på marken för att plockas upp av spelaren så behöver vi kunna representera även det med ett tecken för objektet.  
-
-### Potion : Equipment
-Klass som ärver från Equipment.  
-Implementerar Use()  
-
-### Sword : Equipment
-Klass som ärver Equipment.  
-Implementerar Use()  
+### Equipment-objekt : IRepresentable
+Property för hur mycket skada eller healing som det kan göra.  
+Innehåller ett Verb-property som säger vad det kallas att använda objektet. Exempelvis "Attack" eller "Swing" för svärd, "Drink" för Potions, etc.  
   
 ### Map-objekt
-Innehåller ett 2D-array (eller lista?) för hela spelvärlden, där varje element visar vad rutan innehåller.  
-*Om vi gör på detta vis kan endast ett objekt/karaktär finnas i en ruta åt gången.*  
-object[,] world = object[height,width];  
-Ett array av typen 'object' kan innehålla alla objekt oavsett typ eftersom alla objekt ärver från 'object'.  
-Ska det kunna finnas 'null'-rutor, eller ska vi implementera exempelvis att det finns Floor-objekt för att hålla
-reda på vart spelaren kan gå, och Wall-objekt som säger vart spelaren inte kan gå?  
-* Steg 1, handgjord karta.
-* Steg 2, eventuellt procedurellt genererad karta.  
+Innehåller två 2D-arrayer för hela spelvärlden, där varje element visar vad rutan innehåller.  
+*public MapTile[,] staticMap; // Walls, floors.*  
+*public IRepresentable[,] dynamicMap; // Stuff that move or change, player, monsters, items, etc.*  
 Stödmetoder för att göra kartskapande enklare:  
-DrawPoint(x, y, object) - Placerar ut ett *object* på position x,y.  
 DrawRect(x,y, width, height, borderObject, fillObject) - Placerar ut en rektangel på kartan med väggar av *borderObject* och fylld med *fillObject*.  
+DefaultMap() för att skapa en standardkarta.  
   
-Förslag: Innehåller två 2D-arrayer för världen, en med endast grundkarta med väggar/golv och en som innehåller alla characters/andra objekt som finns i världen?  
-Då vet vi automatisk vad som ska finnas i en ruta om inget annat finns där, ex. när spelaren flyttar på sig eller plockar upp ett item från kartan.  
-Behöver metod för att skapa string-representation av den del av världen som vi befinner oss i. *string MapString(x,y,width,height)?*  
-  
+### MapTile : IRepresentable  
+Representerar statiska objekt i spelvärlden som inte flyttar på sig.  
+Utöver IRepresentable så har den property *Walkable* som visar var karaktärer kan gå.  
+
 ### Victory/lose condition 
 * Game Over-skärm
 * Victory-skärm
@@ -83,3 +68,4 @@ Behöver metod för att skapa string-representation av den del av världen som v
 ### Referensmaterial
 Liknande spel: https://en.wikipedia.org/wiki/Rogue_(video_game)
   
+## Screenshots/Resultat  

@@ -3,56 +3,49 @@
   <Class Name="DungeonCrawler.GameEngine">
     <Position X="1" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAIgAAAAAACAAAgAAAAhAAAIAAAAAAgAAACAQCAAAA=</HashCode>
+      <HashCode>AAAIgAAAAAACAAAgAAAAhACAIAAAAAAgAAACAQCAAAA=</HashCode>
       <FileName>GameEngine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DungeonCrawler.PlayerCharacter">
-    <Position X="10" Y="2.75" Width="1.75" />
+    <Position X="10.5" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAAAAAAAkAgAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAAAACAAIAAAAAAAAEAAAAgACQAAAAAAAAgAgAAAAA=</HashCode>
       <FileName>PlayerCharacter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DungeonCrawler.Character">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAGACAAIAACACgAAAAAAQgAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <HashCode>AAAAGACAAIAACAAiAAAAAMQgAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>Character.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DungeonCrawler.NonPlayerCharacter">
-    <Position X="10" Y="0.5" Width="1.75" />
+    <Position X="10.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAIAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgIKAAAAAAIIgAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NonPlayerCharacter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DungeonCrawler.DungeonMap">
     <Position X="3.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAABAAACAAABAAAAAQAAAEAgCAAgAhEBA=</HashCode>
+      <HashCode>AAAAAAAAAIAAARAQAAAAABCAAAAQAAAEAgCAAwAhEBA=</HashCode>
       <FileName>DungeonMap.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DungeonCrawler.Equipment">
-    <Position X="8.25" Y="4.75" Width="1.5" />
+    <Position X="5.75" Y="4.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAACgAAAAAAQAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>Equipment.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DungeonCrawler.SwordEquipment">
-    <Position X="10" Y="5.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SwordEquipment.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DungeonCrawler.CoinItem">
-    <Position X="5.75" Y="3.5" Width="2" />
+    <Position X="8.25" Y="5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAAgAAAA=</HashCode>
       <FileName>CoinItem.cs</FileName>
@@ -68,7 +61,7 @@
     <Lollipop Position="0.1" />
   </Class>
   <Interface Name="DungeonCrawler.IRepresentable">
-    <Position X="3.25" Y="5" Width="2" />
+    <Position X="3.25" Y="5.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>IRepresentable.cs</FileName>

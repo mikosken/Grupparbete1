@@ -47,7 +47,7 @@ namespace DungeonCrawler
             WorldMap.PlaceDynamic(84, 27, axe);
             WorldMap.PlaceDynamic(96, 3, axe);
 
-            CoinItem coin = new CoinItem(40, '£');
+            CoinItem coin = new CoinItem(100, '£');
             WorldMap.PlaceDynamic(45, 39, coin);
 
             // place enemies on map
