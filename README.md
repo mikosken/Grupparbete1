@@ -69,3 +69,13 @@ Utöver IRepresentable så har den property *Walkable* som visar var karaktärer
 Liknande spel: https://en.wikipedia.org/wiki/Rogue_(video_game)
   
 ## Screenshots/Resultat  
+  
+![Screenshot of start screen(]https://raw.githubusercontent.com/mikosken/Grupparbete1/main/Screen1.png)  
+  
+![Screenshot of game](https://raw.githubusercontent.com/mikosken/Grupparbete1/main/Screen2.png)  
+  
+![Screenshot of victory screen](https://raw.githubusercontent.com/mikosken/Grupparbete1/main/Screen3.png)  
+  
+### Classes  
+  
+![Class diagram](https://raw.githubusercontent.com/mikosken/Grupparbete1/main/ClassDiagram1.png)  
